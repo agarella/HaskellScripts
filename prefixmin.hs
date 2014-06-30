@@ -1,6 +1,10 @@
-prefixMin xs = calcPrefixMin xs []
+prefixMin []	 = error "prefixMin []"
+prefixMin (x:xs) = scanl min x xs
 
-suffixMin xs = calcPrefixMin (reverse xs) []
+suffixMin xs = prefixMin (reverse xs)
+
+prefixMinRec xs = calcPrefixMin xs []
+suffixMinRec xs = calcPrefixMin (reverse xs) []
 
 calcPrefixMin [] ys	= ys
 calcPrefixMin (x:xs) [] = calcPrefixMin xs [x]
