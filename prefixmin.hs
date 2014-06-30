@@ -1,7 +1,7 @@
-prefixmin xs = calcprefixmin xs []
+prefixMin xs = calcPrefixMin xs []
 
-suffixmin xs = calcprefixmin (reverse xs) []
+suffixMin xs = calcPrefixMin (reverse xs) []
 
-calcprefixmin [] ys  = ys
-calcprefixmin (x:xs) [] = calcprefixmin xs [x]
-calcprefixmin (x:xs) ys = calcprefixmin xs (ys ++ [min x (last ys)])    
+calcPrefixMin [] ys	= ys
+calcPrefixMin (x:xs) [] = calcPrefixMin xs [x]
+calcPrefixMin (x:xs) ys = calcPrefixMin xs (ys ++ [min x (last ys)])    
