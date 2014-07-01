@@ -16,6 +16,5 @@ multiply Zero y 	= Zero
 multiply (Succ Zero) y	= Succ Zero
 multiply x (Succ Zero)	= Succ Zero
 multiply x y 		= calcMultiply x y Zero
-
-calcMultiply x Zero z 		= z
-calcMultiply x (Succ y) z	= calcMultiply x y (add x z) 
+		where 	calcMultiply x Zero z 		= z
+			calcMultiply x (Succ y) z	= calcMultiply x y (add x z) 
