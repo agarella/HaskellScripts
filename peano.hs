@@ -17,4 +17,9 @@ multiply (Succ Zero) y	= Succ Zero
 multiply x (Succ Zero)	= Succ Zero
 multiply x y 		= calcMultiply x y Zero
 		where 	calcMultiply x Zero z 		= z
-			calcMultiply x (Succ y) z	= calcMultiply x y (add x z) 
+			calcMultiply x (Succ y) z	= calcMultiply x y (add x z)
+
+subtractPeano x y  	| y > x 	= error "Result is not a member of the natural numbers"
+			| otherwise	= calcSubtract x y Zero
+			where calcSubtract x y z	| add y z == x	= z
+							| otherwise 	= calcSubtract x y (Succ z)
