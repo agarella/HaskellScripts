@@ -6,7 +6,9 @@ add x Zero = x
 add x (Succ y) = add (Succ x) y
 
 peanoToNum Zero = 0
-peanoToNum (Succ x) = peanoToNum x + 1
+peanoToNum x = peanoToNumAux x 0
+		where 	peanoToNumAux Zero acc 		= acc
+			peanoToNumAux (Succ x) acc 	= peanoToNumAux x (acc + 1)
 
 numToPeano 0 = Zero
 numToPeano n = Succ (numToPeano (n - 1))
