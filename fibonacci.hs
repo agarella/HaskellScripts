@@ -10,7 +10,8 @@ fibonacciRec n = fibonacciRec (n - 1) + fibonacciRec (n - 2)
 fibonacciList n | n < 0 = error "fibonacci n < 0 undefined"
                 | n == 0 = [1]
                 | n == 1 = 1 : fibonacciList (n - 1)
-                | otherwise = (sum.take 2) (fibonacciList (n - 1)) : fibonacciList (n - 1)
+                | otherwise = (sum.take 2) smallerList : smallerList
+                where smallerList = fibonacciList (n - 1)
 
 fibonacciListR n | n < 0 = error "fibnoacci n < 0 undefined"
                  | n == 0 = [1]
