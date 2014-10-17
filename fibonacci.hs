@@ -16,4 +16,5 @@ fibonacciList n | n < 0 = error "fibonacci n < 0 undefined"
 fibonacciListR n | n < 0 = error "fibnoacci n < 0 undefined"
                  | n == 0 = [1]
                  | n == 1 = fibonacciListR (n - 1) ++ [1]
-                 | otherwise = fibonacciListR (n - 1) ++ [sum (drop (n - 2) (fibonacciListR (n - 1)))]
+                 | otherwise = smallerList ++ [sum (drop (n - 2) smallerList)]
+                 where smallerList = fibonacciListR (n - 1)
