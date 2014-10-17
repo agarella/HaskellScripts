@@ -9,12 +9,12 @@ fibonacciRec n = fibonacciRec (n - 1) + fibonacciRec (n - 2)
 
 fibonacciList n | n < 0 = error "fibonacci n < 0 undefined"
                 | n == 0 = [1]
-                | n == 1 = 1 : fibonacciList (n - 1)
-                | otherwise = (sum.take 2) smallerList : smallerList
-                where smallerList = fibonacciList (n - 1)
+                | n == 1 = 1 : recursiveFibs
+                | otherwise = (sum.take 2) recursiveFibs : recursiveFibs
+                where recursiveFibs = fibonacciList (n - 1)
 
 fibonacciListR n | n < 0 = error "fibnoacci n < 0 undefined"
                  | n == 0 = [1]
-                 | n == 1 = fibonacciListR (n - 1) ++ [1]
-                 | otherwise = smallerList ++ [sum (drop (n - 2) smallerList)]
-                 where smallerList = fibonacciListR (n - 1)
+                 | n == 1 = recursiveFibs++ [1]
+                 | otherwise = recursiveFibs ++ [sum (drop (n - 2) recursiveFibs)]
+                 where recursiveFibs = fibonacciListR (n - 1)
