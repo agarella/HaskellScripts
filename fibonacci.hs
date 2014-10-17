@@ -4,18 +4,21 @@ fibonacci n = fibonacciAux n 1 1
  where fibonacciAux 1 n1 n2 = n1
        fibonacciAux n n1 n2 = fibonacciAux (n - 1) (n1 + n2) n1
 
+fibonacciRec :: (Num a1, Num a, Eq a) => a -> a1
 fibonacciRec 0 = 1
 fibonacciRec 1 = 1
 fibonacciRec n = fibonacciRec (n - 1) + fibonacciRec (n - 2)
 
+fibonacciList :: (Ord a, Num a, Num t) => a -> [t]
 fibonacciList n | n < 0 = error "fibonacci n < 0 undefined"
                 | n == 0 = [1]
                 | n == 1 = 1 : recursiveFibs
                 | otherwise = (sum.take 2) recursiveFibs : recursiveFibs
                 where recursiveFibs = fibonacciList (n - 1)
 
+fibonacciListR :: Num t => Int -> [t]
 fibonacciListR n | n < 0 = error "fibnoacci n < 0 undefined"
                  | n == 0 = [1]
-                 | n == 1 = recursiveFibs++ [1]
+                 | n == 1 = recursiveFibs ++ [1]
                  | otherwise = recursiveFibs ++ [sum (drop (n - 2) recursiveFibs)]
                  where recursiveFibs = fibonacciListR (n - 1)
