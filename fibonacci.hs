@@ -1,3 +1,4 @@
+fibonacci :: (Num a1, Num a, Eq a1) => a1 -> a
 fibonacci 0 = 1
 fibonacci n = fibonacciAux n 1 1
  where fibonacciAux 1 n1 n2 = n1
