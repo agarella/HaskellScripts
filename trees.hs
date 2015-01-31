@@ -5,7 +5,7 @@ import Data.Foldable
 -- Binary Tree
 ------------------------------------------------------------------------------------------------------------------------------
 
-data BTree a = Leaf a | Node a (BTree a) (BTree a) deriving (Show)  
+data BTree a = Leaf a | Node a (BTree a) (BTree a) deriving (Show, Eq)  
 
 contains :: (Foldable t, Functor t, Eq a) => t a -> a -> Bool
 contains tree x = or $ fmap (== x) tree
