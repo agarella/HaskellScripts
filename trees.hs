@@ -1,6 +1,5 @@
 import Prelude hiding (foldr, or)
 import Data.Foldable
-import Data.Monoid
 
 ------------------------------------------------------------------------------------------------------------------------------
 -- Binary Tree
