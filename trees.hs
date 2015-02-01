@@ -1,4 +1,6 @@
-import Prelude hiding (foldr, or)
+module Trees where
+
+import Prelude hiding (foldr, or, sum)
 import Data.Foldable
 
 ------------------------------------------------------------------------------------------------------------------------------
