@@ -8,17 +8,24 @@ import Data.Foldable
 ------------------------------------------------------------------------------------------------------------------------------
 data BTree a = Empty | Node a (BTree a) (BTree a) deriving (Show, Eq)
 
-root :: BTree t -> t
-root Empty = error "root Empty"
-root (Node x _ _) = x
+root :: BTree t -> Maybe t
+root Empty = Nothing
+root (Node x _ _) = Just x
 
 contains :: (Foldable t, Functor t, Eq a) => t a -> a -> Bool
 contains tree x = or $ fmap (== x) tree
 
-findMax :: Ord b => BTree b -> b
-findMax t = foldr max (root t) t
-findMin :: Ord b => BTree b -> b
-findMin t = foldr min (root t) t
+applicativeMax :: Ord a => Maybe a -> Maybe a -> Maybe a
+applicativeMax x y = max <$> x <*> y
+
+applicativeMin :: Ord a => Maybe a -> Maybe a -> Maybe a
+applicativeMin x y = min <$> x <*> y
+
+-- findMax :: Ord b => BTree b -> b
+findMax t = foldr applicativeMax (root t) (fmap Just t)
+
+-- findMin :: Ord b => BTree b -> b
+findMin t = foldr applicativeMin (root t) (fmap Just t)
 
 instance Functor BTree where
   fmap f Empty = Empty
