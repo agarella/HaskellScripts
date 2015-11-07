@@ -21,10 +21,10 @@ applicativeMax x y = max <$> x <*> y
 applicativeMin :: Ord a => Maybe a -> Maybe a -> Maybe a
 applicativeMin x y = min <$> x <*> y
 
--- findMax :: Ord b => BTree b -> b
+findMax :: Ord b => BTree b -> Maybe b
 findMax t = foldr applicativeMax (root t) (fmap Just t)
 
--- findMin :: Ord b => BTree b -> b
+findMin :: Ord b => BTree b -> Maybe b
 findMin t = foldr applicativeMin (root t) (fmap Just t)
 
 instance Functor BTree where
