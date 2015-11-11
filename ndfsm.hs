@@ -15,10 +15,7 @@ delta 2 'c' = [2]
 delta 2 'a' = [1]
 delta _ _   = []
 
-
-example = nub $ do
-  x <- delta 1 'a'
-  delta x 'a'
-
 runMachine :: (State -> Alphabet -> [State]) -> State -> [Alphabet] -> [State]
 runMachine d s0 string = nub $ foldr (\x y -> y >>= (\z -> d z x)) [s0] string
+
+example = runMachine delta 1 "aa"
