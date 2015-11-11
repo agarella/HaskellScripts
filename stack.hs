@@ -17,7 +17,6 @@ pop = state $ \(x : s) -> (x, s)
 ----
 
 example = runState pushValues []
-  where pushValues = do _ <- push 1
-                        _ <- push 2
-                        z <- push 3
-                        return z
+  where pushValues = do push 1
+                        push 2
+                        push 3
