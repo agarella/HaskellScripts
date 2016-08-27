@@ -1,11 +1,11 @@
-module KleisliMonad(
-  fmap,
-  (<*>),
-  (>>=),
-  liftM,
-  lift,
-  liftId,
-  runId
+module KleisliMonad
+( fmap
+, (<*>)
+, (>>=)
+, liftM
+, lift
+, liftId
+, runId
 ) where
 
 import qualified Control.Monad as M(return, (>>=))
