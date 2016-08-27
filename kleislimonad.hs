@@ -1,4 +1,12 @@
-module KleisliMonad where
+module KleisliMonad(
+  fmap,
+  (<*>),
+  (>>=),
+  liftM,
+  lift,
+  liftId,
+  runId
+) where
 
 import qualified Control.Monad as M(return, (>>=))
 import qualified Control.Monad.Identity as I
@@ -29,9 +37,6 @@ liftId = lift id
 
 runId :: Kleisli I.Identity a b -> a -> b
 runId k a  = I.runIdentity $ runKleisli k a
-
-ask :: ReaderT m a b -> ReaderT m a a
-ask f = Kleisli (\a -> return a)
 
 -- Examples
 kleisliAdd1 :: Kleisli I.Identity Int Int
